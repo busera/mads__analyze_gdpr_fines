@@ -51,7 +51,48 @@ The purpose of the project is to analyze GDPR fines that have been issued since 
 
 
 # Dataset
-The project team will create, collect, clean, manipulate and store the datasets according to the following process flow:
+The project created, collectd, cleaned, manipulated and stored the datasets according to the following process flow:
 
 ![Process Flow](reports/figures/dataset_process_flow.png)
+
+🤝 **Decisions**: 
+- For all datasets (tables), the same unique key is created and used: country+year.
+- All cleaned datasets will be stored in the SQLite file “project_GDPR-fines.sqlite” for the following reasons:
+  - Retain data types and structure (compared to xlsx or csv)
+  - Improve access outside of Python, e.g. via an SQLite DB Browser
+
+
+**Legend**
+- WS: Web scraping
+- DCO: Data collection
+- DCL: Data cleaning and manipulation
+
+## Primary Dataset Description
+### GDPR fines
+The GDPR fines data is the primary dataset. The information is scraped from the GDPR Enforcement Tracker website and contains details about the imposed GDPR fines. 
+
+The information is scrapped with the Selenium library, because the GDPR information is dynamically loaded via Javascript and not available as a text in the html source code. The parsing process was written by the project team and is documented in the notebook: “01_DCO-WS_GDPR-Fines_enforcementtracker.ipynb”. 
+
+| Column | dtype | atype | Rel. | Description |
+|--------|-------|-------|------|-------------|
+| ETid | str | O | No | Unique identifier assigned by the GDPR Enforcement Tracker |
+| Country | str | N | Yes | Name of country |
+| Date of Decision | str | O | Yes | Date when the fine was imposed |
+| Fine [€] | int | Q | Yes | Amount of the fine in EUR |
+| Controller/Processor | str | N | Yes | Data controller / processor / organization fined |
+| Quoted Art. | str | N | Yes | Relevant GDPR article which was quoted for the imposed fine |
+| Type | str | N | Yes | Reason/cause for the fine |
+| Summary | str | N | Yes | Short explanation of the case |
+| Authority | str | N | Yes | Name of the data protection authority who imposed the fine |
+| Sector | str | N | Yes | Industry sector of the the controller/processor |
+
+
+| Item | Details |
+|------|---------|
+| Access method | Web scraping (initial): Last scrap on 2021-11-28 |
+| Last update | |
+| Estimated size | Target |
+| | 926 records |
+| No. of attributes | Target |
+| | 10 |
 
