@@ -1,3 +1,5 @@
+# Analyzing GDRP Fines
+
 - [Analyzing GDRP Fines](#analyzing-gdrp-fines)
   - [1. Project Overview](#1-project-overview)
     - [1.1. Project Team](#11-project-team)
@@ -21,13 +23,10 @@
   - [9. Conclusion](#9-conclusion)
 
 
-# Analyzing GDRP Fines
-
+## 1. Project Overview
 Analyzing GDPR fines imposed by the European data protection authorities could reveal the main 
 reasons and focus areas of the authorities for non-compliance and could allow our organization 
 to timely address similar gaps in their data privacy strategy.
-
-## 1. Project Overview
 
 ### 1.1. Project Team
 
