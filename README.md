@@ -55,7 +55,7 @@ The project created, collectd, cleaned, manipulated and stored the datasets acco
 
 ![Process Flow](reports/figures/dataset_process_flow.png)
 
-🤝 **Decisions**: 
+> 🤝 **Decisions**: 
 - For all datasets (tables), the same unique key is created and used: country+year.
 - All cleaned datasets will be stored in the SQLite file “project_GDPR-fines.sqlite” for the following reasons:
   - Retain data types and structure (compared to xlsx or csv)
@@ -98,3 +98,4 @@ The information is scrapped with the Selenium library, because the GDPR informat
 | File format | HTML | Parsed: PKL |
 
 
+> ⚠️ Attention: The initial parsing takes several hours, because for the detailed information (Summary, Authority and Sector) the page for every single case has to be opened and closed in sequence. The process also needs to be monitored due to potential timeout issues.
