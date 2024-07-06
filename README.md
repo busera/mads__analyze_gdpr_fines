@@ -87,12 +87,14 @@ The information is scrapped with the Selenium library, because the GDPR informat
 | Sector | str | N | Yes | Industry sector of the the controller/processor |
 
 
-| Item | Details |
-|------|---------|
-| Access method | Web scraping (initial): Last scrap on 2021-11-28 |
-| Last update | |
-| Estimated size | Target |
-| | 926 records |
-| No. of attributes | Target |
-| | 10 |
+| Item | Source | Target |
+|------|--------|--------|
+| Access method | Web scraping (initial): Last scrap on 2021-11-28 | |
+| Last update | | |
+| Estimated size | | 926 records |
+| No. of attributes | | 10 |
+| Location | https://www.enforcementtracker.com/ | /data/external/ |
+| Filename | Not applicable | gdpr_fines_enforcementtracker_p2.pkl |
+| File format | HTML | Parsed: PKL |
+
 
