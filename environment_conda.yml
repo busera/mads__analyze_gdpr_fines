@@ -1,0 +1,17 @@
+name: siads591
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pandas
+  - jupyterlab
+  - matplotlib
+  - altair
+  - seaborn
+  - missingno
+  - openpyxl
+  - black
+  - flake8
+  - pip
+  - pip:
+    - -r environment_pip.txt
