@@ -56,10 +56,10 @@ The project created, collectd, cleaned, manipulated and stored the datasets acco
 ![Process Flow](reports/figures/dataset_process_flow.png)
 
 > 🤝 **Decisions**: 
-- For all datasets (tables), the same unique key is created and used: country+year.
-- All cleaned datasets will be stored in the SQLite file “project_GDPR-fines.sqlite” for the following reasons:
-  - Retain data types and structure (compared to xlsx or csv)
-  - Improve access outside of Python, e.g. via an SQLite DB Browser
+> - For all datasets (tables), the same unique key is created and used: country+year.
+> - All cleaned datasets will be stored in the SQLite file “project_GDPR-fines.sqlite” for the following reasons:
+>    - Retain data types and structure (compared to xlsx or csv)
+>    - Improve access outside of Python, e.g. via an SQLite DB Browser
 
 
 **Legend**
