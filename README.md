@@ -67,7 +67,7 @@ The project created, collectd, cleaned, manipulated and stored the datasets acco
 - DCO: Data collection
 - DCL: Data cleaning and manipulation
 
-## Primary Dataset Description
+## Primary Dataset
 ### GDPR fines
 The GDPR fines data is the primary dataset. The information is scraped from the GDPR Enforcement Tracker website and contains details about the imposed GDPR fines. 
 
@@ -98,4 +98,50 @@ The information is scrapped with the Selenium library, because the GDPR informat
 | File format | HTML | Parsed: PKL |
 
 
-> ⚠️ Attention: The initial parsing takes several hours, because for the detailed information (Summary, Authority and Sector) the page for every single case has to be opened and closed in sequence. The process also needs to be monitored due to potential timeout issues.
+> ⚠️ **Attention**: The initial parsing takes several hours, because for the detailed information (Summary, Authority and Sector) the page for every single case has to be opened and closed in sequence. The process also needs to be monitored due to potential timeout issues.
+
+## Secondary Datasets
+### Population
+Countries of the world with their population over the years (1955 - 2020). The data is scraped from the Worldometer website. 234 out of 235 countries were parsed. Micronesia was excluded due to parsing issues. For the parsing the Beautiful Soup library is used. The parsing code was written by the project team and is documented in the notebook: “01_DCO-WS_population_worldmeter.ipynb”.
+
+| Column | dtype | atype | Rel. | Description |
+|--------|-------|-------|------|-------------|
+| Country | str | N | Yes | Name of the country |
+| Year | int | O | Yes | Year of population |
+| Population | int | Q | Yes | Amount of population |
+| Yearly % Change | float | Q | No | Yearly change of the population |
+| Urban Population | int | Q | No | Amount of urban population |
+
+
+| Item | Source | Target |
+|------|--------|--------|
+| Access method | Web scraping (initial): Last scrap on 2021-11-28 | |
+| Last update | N/A | |
+| Estimated size | | 4212 (Micronesia excluded) |
+| No. of attributes | | 5 |
+| File location | https://www.worldometers.info/population/ | /data/external/ |
+| Filename | Not applicable | population_by_country_p2.pkl |
+| File format | HTML table | PKL |
+
+> 🤝 **Decisions**: Micronesia was excluded due to parsing issues. Reasons for the parsing issues are related to the fact that Micronesia does not have all the data/columns compared to the other countries in the Worldmeter dataset. Considering that this country is not relevant for our analysis (no GDPR fines in Micronesia) the project team decided not to invest more time to cover this specific parsing case and decided to exclude the country.
+
+### CPI Scores
+The CPI dataset describes the Corruption Perceptions Index (CPI) per country. The CPI scores and ranks countries/territories based on how corrupt a country’s public sector is perceived to be. It is a composite index, a combination of surveys and assessments of corruption, collected by a variety of reputable institutions. 
+
+The data is manually downloaded from the “Transparency International” website.
+
+| Column | dtype | atype | Rel. | Description |
+|--------|-------|-------|------|-------------|
+| Country | str | N | Yes | Name of country |
+| ISO3 | str | N | Yes | ISO code of the country name |
+| CPI Score 20xx | int | Q | Yes | Corruption Perceptions Index (CPI) score of the year |
+
+| Item | Source | Target |
+|------|--------|--------|
+| Access method | Download: Last download on 2021-11-29 | |
+| Estimated size | 180 records | |
+| No. of attributes | 34 | |
+| File location | https://www.transparency.org/en/cpi/2020/index/ | /data/external/ |
+| Filename | CPI2020_GlobalTablesTS_210125.xlsx | CPI2020_GlobalTablesTS_210125.xlsx |
+| File format | XLSX | XLSX |
+
