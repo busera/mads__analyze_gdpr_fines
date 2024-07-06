@@ -6,7 +6,7 @@ to timely address similar gaps in their data privacy strategy.
 
 
 # Project Summary
-Context: On May 25, 2018, the European Union (EU) “General Data Protection Regulation” (GDPR) became effective. The GDPR is a new data privacy initiative adopted by the EU to provide enhanced protection to EU citizens and their personal data. The penalties violations can result in up to twenty million euros or four percent of the company’s global annual revenue from the previous year, whichever number is higher. In addition, EU legislators impose fines for penalties to enforce data protection compliance.
+On May 25, 2018, the European Union (EU) “General Data Protection Regulation” (GDPR) became effective. The GDPR is a new data privacy initiative adopted by the EU to provide enhanced protection to EU citizens and their personal data. The penalties violations can result in up to twenty million euros or four percent of the company’s global annual revenue from the previous year, whichever number is higher. In addition, EU legislators impose fines for penalties to enforce data protection compliance.
 
 ## Objective
 The purpose of the project is to analyze GDPR fines that have been issued since 2018 and to get: 
@@ -19,12 +19,9 @@ The purpose of the project is to analyze GDPR fines that have been issued since 
   - What are the “average costs” of a violation per sector?
 
 - **Advanced insights** by correlating the GDPR fine dataset with the population by country (POP), gross domestic product (GDP), and corruption perception index (CPI) by country, the project intents to verify the following assumptions:
-  - A higher GDP could lead to: 
-    - More reported cases, because a higher GDP could mean more companies in the country
-  - A higher CPI could lead to 
-    - More reported cases, because the public sector is maybe less influenced by the companies (higher CPI score = less corrupted)
-  - A higher population could lead to
-    - More reported cases because more data subjects could execute their rights
+  - **A higher GDP** could lead to more reported cases, because a higher GDP could mean more companies in the country
+  - **A higher CPI** could lead to more reported cases, because the public sector is maybe less influenced by the companies (higher CPI score = less corrupted)
+  - **A higher population** could lead to more reported cases because more data subjects could execute their rights
 
 
 # Project Organization
@@ -53,4 +50,8 @@ The purpose of the project is to analyze GDPR fines that have been issued since 
     │                         generated, e.g., with `pip freeze > requirements.txt`
 
 
+# Dataset
+The project team will create, collect, clean, manipulate and store the datasets according to the following process flow:
+
+![Process Flow](reports/figures/dataset_process_flow.png)
 
