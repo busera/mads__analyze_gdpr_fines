@@ -304,6 +304,8 @@ Spain emerged as the country with the highest number of fines across all industr
 
 as these areas account for the majority of compliance issues and associated costs. 
 
-We've also identified positive correlations between fine amounts and factors such as GDP, Corruption Perception Index (CPI), and population size. While our dataset has limitations in completeness, it provides valuable directional insights for improving GDPR compliance strategies. Future work will focus on refining our analysis with updated data, exploring additional variables, and developing predictive models to further enhance our understanding of GDPR enforcement trends.
+We've also identified positive correlations between fine amounts and factors such as GDP, Corruption Perception Index (CPI), and population size. 
+
+While our dataset has limitations in completeness, it provides valuable directional insights for improving GDPR compliance strategies. Future work will focus on refining our analysis with updated data, exploring additional variables, and developing predictive models to further enhance our understanding of GDPR enforcement trends.
 
 The complete presentation can be accessed here: [Analyze GDPR Fines](https://github.com/busera/mads__analyze_gdpr_fines/blob/main/reports/Analyze_GDPR_Fines-Final_Report.pdf)
