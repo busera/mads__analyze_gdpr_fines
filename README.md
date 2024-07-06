@@ -190,3 +190,63 @@ The key attribute used to combine all datasets is the country name + year. Those
 | CPI | • Skip first 2 rows during import<br>• Lowercase column names<br>• Calculate CPI score 2021 based on average growth rate<br>• Keep relevant columns: country, CPI scores 2018-2021<br>• Rename columns to years only<br>• Melt 2018 to 2021 (single rows per year)<br>• Clean/check country names for consistency<br>• Keep only countries in GDPR-fine dataset<br>• Label-encode country<br>• Create unique key column: country+year<br>• Create and assign percentile column<br>• Save result in SQLite DB-file |
 | GDP | • Skip first 3 rows during import<br>• Lowercase column names<br>• Calculate GDP 2021 based on average growth rate<br>• Keep relevant columns: country name, 2018-2021<br>• Melt 2018 to 2021 (single rows per year)<br>• Clean/check country names for consistency<br>• Keep only countries in GDPR-fine dataset<br>• Label-encode country<br>• Create unique key column: country+year<br>• Create and assign percentile column<br>• Save result in SQLite DB-file |
 
+# Analysis
+In the analysis phase, the project team will combine numerical and visualization techniques to allow a better understanding of the different characteristics of the dataset, its features, and the potential relationships. For this EDA all datasets will be merged/joined into one dataframe. 
+
+With the EDA we try to address and verify the following questions:
+- What is the distribution of the various features to understand skewness, imbalances, and potential bias?
+- Are outliers present?
+- What are the relationships between the main features: GDPR fine, country, year, population, CPI, and GDP?
+- How do the different pairs of features correlate with one other? Do these correlations make sense?
+
+In the univariate EDA we intent to answer the following questions:
+- Which individual companies have been penalized the most?
+- Which EU countries have the most violations?
+- Which industry sectors have the most violations?
+- Which GDPR articles have been violated the most?
+- What are the “expected average costs” of a violation per sector or article?
+
+## Univariate EDA for Numerical Features
+For the numerical EDA the most commonly used descriptive statistics will be used as provided by pandas in the .describe() method. The method will provide calculations for count, mean, standard deviation, minimum, percentiles, and maximum. With the help of these numbers, relevant quantitative characteristics should be discovered.
+
+| What | How (technique) | Why (learn from it) |
+|------|-----------------|----------------------|
+| Checking characteristics of all single numerical features. | • Histogram(s) with the pandas .hist() method<br>• Box Plots<br>• Bar Plots | To identify and understand the:<br>• Distribution / Skewness<br>• Outliers<br>• Variability |
+
+## Bi-/Multivariate EDA
+Bivariate EDA techniques are used to explore pairs of variables and start understanding how they relate to each other. In the bi-/multivariate EDA we intent to explore the following assumptions:
+- **A higher GDP** could lead to more reported cases, because a higher GDP could mean more companies in the country
+- **A higher CPI** could lead to more reported cases, because the public sector is maybe less influenced by the companies (higher CPI score = less corrupted)
+- **A higher population** could lead to more reported cases because more data subjects could execute their rights
+
+
+| What | How (technique) | Why (learn from it) |
+|------|-----------------|----------------------|
+| Analyzing two or more numerical features | • Scatter plot / Seaborn pair-plot<br>• Pearson correlation coefficient<br><br>Note: correlation will be run against all features. | To explore the relationships between pairs of features:<br><br>Scatter plot:<br>• Overall pattern<br>• Strength/Noise<br>• Direction<br>  - Positive<br>  - Negative<br><br>Pearson:<br>• Strength<br>• Direction<br>  - Positive<br>  - Negative |
+| Analyzing two or more categorical features | • Bar plots<br>• Cross-tables (optional)<br><br>Note: Correlation will be run against all features. | |
+| Analyzing numerical and categorical features | • Box plots | To identify distributions and variations of numerical features, such as the GDPR fine, across categorical features, such as articles quoted, industry sector, ... |
+
+## Ethical Considerations
+In order to assess for ethical concerns as part of the project, we have decided to use the Data Science Ethics Checklist embedded in the “Deon” library. The ethics checklist will be added to our data science project and notebooks and reviewed for relevance.
+An initial assessment for potential ethical considerations is presented below:
+
+
+| Topic | Relevant | Comments Project Team |
+|-------|------|------------------------|
+| A. Data Collection | | |
+| A.1 Informed consent | No | Human subjects are not in the scope of the project. The information used such as GDPR related fines or country corruption index is publicly available information. |
+| A.2 Collection bias | Yes | The GDPR related fines information publicly available is not the complete set of information. Certain fines are not made available for multiple reasons, such as ongoing broader investigations. As a result, the level of completeness of our analysis may be impacted. However, due to limited access to the information and time, we would not reach out to local privacy authorities for a more comprehensive view. We are planning to use analytics techniques to detect potential bias and find solutions to compensate for it. |
+| A.3 Limit PII exposure | No | Personal identifiable information is not used in our analysis. Hence, anonymization or limiting data collection does not represent a risk. |
+| A.4 Downstream bias mitigation | Yes | As for A.2, we will analyze bias both in the source data and the results to potentially compensate or mitigate any biased outcomes. |
+| B. Data Storage | | |
+| B.1 Data security | No | The project will use only publicly available information. Therefore, there is no need for data encryption or stringent access control to protect confidentiality. |
+| B.2 Right to be forgotten | No | Individual data is not collected for this exercise. |
+| B.3 Data retention plan | No | No requirements for data retention as the data used is made publicly available without any retention requirements. |
+| C. Analysis | | |
+| C.1 Missing perspectives | Yes | At this stage, we are not considering engaging with local privacy authorities to obtain a more nuanced view on the fines. Our analysis will purely rely on the information made available. However, we may reach out to our Data Privacy Office to explore more in-depth privacy needs. |
+| C.2 Dataset bias | Yes | As part of the analysis phase, we are planning to test and take mitigation actions in case bias is detected. |
+| C.3 Honest representation | Yes | The visualizations are designed having the following criteria: expressiveness and effectiveness. We want to ensure that visualization expresses all the facts in the set of data while conveying the information in an effective manner. |
+| C.4 Privacy in analysis | No | PII (Personal Identifiable Information) is not considered nor collected as part of this project. |
+| C.5 Auditability | Yes | The entire work will be documented in Jupyter Notebook to ensure that the work is reproducible. |
+| D. Modeling | | Not applicable for this project |
+| E. Deployment | | Not applicable for this project |
