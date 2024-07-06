@@ -1,4 +1,4 @@
-name: siads591
+name: gdpr_fines
 channels:
   - conda-forge
 dependencies:
