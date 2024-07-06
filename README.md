@@ -145,3 +145,48 @@ The data is manually downloaded from the “Transparency International” websit
 | Filename | CPI2020_GlobalTablesTS_210125.xlsx | CPI2020_GlobalTablesTS_210125.xlsx |
 | File format | XLSX | XLSX |
 
+### GDP per capita
+Gross Domestic Product (GDP) is the monetary value of all finished goods and services made within a country during a specific period. GDP provides an economic snapshot of a country, used to estimate the size of an economy and growth rate. 
+
+This dataset contains the current GDP in USD, not corrected by the purchasing power parity (PPP) because we want to understand the overall amount of produced goods and services. The dataset is manually downloaded from the “The World Bank” website.
+
+| Column | dtype | atype | Rel. | Description |
+|--------|-------|-------|------|-------------|
+| Country Name | str | N | Yes | Name of country |
+| Country Code | str | N | Yes | ISO code of the country name |
+| Indicator Name | str | N | No | All fields contain 'GDP (current US$)' value |
+| Indicator Code | str | N | No | All fields contains 'NY.GDP.MKTP.CD' value |
+| Columns of years (1960-2020) | float | Q | Yes | The GDP value of the year |
+
+
+| Item | Source | Target |
+|------|--------|--------|
+| Access method | Download: Last download on 2021-11-29 | |
+| Estimated size | 266 records | |
+| No. of attributes | 65 | |
+| File location | https://data.worldbank.org/indicator/NY.GDP.MKTP.CD | /data/external/ |
+| Filename | API_NY.GDP.MKTP.CD_DS2_en_excel_v2_3158925.xls | API_NY.GDP.MKTP.CD_DS2_en_excel_v2_3158925.xls |
+| File format | XLS | XLS |
+
+# Cleaning and Manipulation
+
+**Joining Datasets**
+The key attribute used to combine all datasets is the country name + year. Those attributes and values are present in all datasets.
+
+**Main Challenges**
+- Potential inconsistencies or spelling mistakes for the country naming 
+- Missing values in the datasets
+- Outliers in the datasets
+- Breaking/melting “year columns” into rows
+
+> 🤝 **Decision**: For cleaning or manipulation activities, an assert statement should be used to verify the expected outcome - where possible.
+
+
+| Dataset | Processing Steps |
+|---------|------------------|
+| All datasets | • Lowercase column names<br>• Check consistencies in categorical features<br>• Create mapping table for country names + label encoding<br>• Ensure consistent country names via mapping table<br>• Create "key" column based on country+year for joining datasets<br>• Encode categorical features<br>• Drop unused columns<br>• Check for missing values<br>• Check for outliers |
+| GDPR | • Lowercase column names<br>• Clean and tokenize summary column for NLP analysis<br>• Explode "quoted art." into separate columns<br>• Label-encode: country, controller/processor, quoted art., sector, company, type<br>• Extract year from date column<br>• Create unique key column: country+year<br>• Save result in SQLite DB-file |
+| POP | • Lowercase column names<br>• Calculate population 2021 based on average growth rate<br>• Keep relevant columns: country, year<br>• Label-encode country<br>• Create unique key column: country+year<br>• Create and assign percentile column<br>• Keep only countries in GDPR-fine dataset<br>• Save result in SQLite DB-file |
+| CPI | • Skip first 2 rows during import<br>• Lowercase column names<br>• Calculate CPI score 2021 based on average growth rate<br>• Keep relevant columns: country, CPI scores 2018-2021<br>• Rename columns to years only<br>• Melt 2018 to 2021 (single rows per year)<br>• Clean/check country names for consistency<br>• Keep only countries in GDPR-fine dataset<br>• Label-encode country<br>• Create unique key column: country+year<br>• Create and assign percentile column<br>• Save result in SQLite DB-file |
+| GDP | • Skip first 3 rows during import<br>• Lowercase column names<br>• Calculate GDP 2021 based on average growth rate<br>• Keep relevant columns: country name, 2018-2021<br>• Melt 2018 to 2021 (single rows per year)<br>• Clean/check country names for consistency<br>• Keep only countries in GDPR-fine dataset<br>• Label-encode country<br>• Create unique key column: country+year<br>• Create and assign percentile column<br>• Save result in SQLite DB-file |
+
