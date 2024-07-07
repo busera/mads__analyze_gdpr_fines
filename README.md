@@ -28,6 +28,8 @@ Analyzing GDPR fines imposed by the European data protection authorities could r
 reasons and focus areas of the authorities for non-compliance and could allow our organization 
 to timely address similar gaps in their data privacy strategy.
 
+The complete presentation can be accessed here: [Analyze GDPR Fines](https://github.com/busera/mads__analyze_gdpr_fines/blob/main/reports/Analyze_GDPR_Fines-Final_Report.pdf)
+
 ### 1.1. Project Team
 
 **UMICH MADS Milestone I Team**:
