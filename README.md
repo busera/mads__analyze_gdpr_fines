@@ -284,7 +284,7 @@ We recommend using `conda` as the foundation because it simplifies the managemen
 To create the project's conda environment use:
 
 ```bash
-conda env create -f environment_conda_.yml
+conda env create -f environment_conda.yml
 ```
 
 Once the environment is created, activate it:
